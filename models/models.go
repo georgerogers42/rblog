@@ -14,7 +14,7 @@ type Article struct {
 	Id int
 	Author
 	Slug, Title, Contents string
-	Posted, Updated *time.Time
+	Posted, Updated time.Time
 }
 
 func AllArticles(db *sql.DB) ([]Article, error) {
