@@ -23,9 +23,9 @@ func init() {
 	App.HandleFunc("/{slug}", Slug)
 }
 
-var baseTpl = template.Must(template.ParseFiles("templates/base.tpl"))
+var BaseTpl = template.Must(template.ParseFiles("templates/base.tpl"))
 
-var indexTpl = template.Must(baseTpl.ParseFiles("templates/index.tpl"))
+var IndexTpl = template.Must(BaseTpl.ParseFiles("templates/index.tpl"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	env := map[string]interface{}{}
@@ -34,7 +34,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 	env["Articles"] = articles
-	indexTpl.Execute(w, env)
+	IndexTpl.Execute(w, env)
 
 }
 func Slug(w http.ResponseWriter, r *http.Request) {
