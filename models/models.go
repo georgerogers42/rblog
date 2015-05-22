@@ -17,7 +17,7 @@ type Article struct {
 	Posted, Updated *time.Time
 }
 
-func AllArticles(db *sq.DB) ([]Article, error) {
+func AllArticles(db *sql.DB) ([]Article, error) {
 	rows, err := db.Query("SELECT author.id, pseudonym, name, encpass, article.id, slug, title, contents, posted, updated FROM author, article WHERE author.id = article.fk_author ORDER BY posted DESC")
 	if err != err {
 		return nil, err
