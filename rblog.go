@@ -1,7 +1,8 @@
 package rblog
+
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 )
 
 var App = mux.NewRouter()
@@ -12,4 +13,5 @@ func init() {
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {}
-func Slug(w http.ResponseWriter, r *http.Request) {}
+func Slug(w http.ResponseWriter, r *http.Request)  {}
+
