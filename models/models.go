@@ -1,12 +1,13 @@
 package models
+
 import (
-	"time"
 	"database/sql"
 	_ "github.com/lib/pq"
+	"time"
 )
 
 type Author struct {
-	Id int
+	Id                       int
 	Pseudonym, Name, EncPass string
 }
 
@@ -14,7 +15,7 @@ type Article struct {
 	Id int
 	Author
 	Slug, Title, Contents string
-	Posted, Updated time.Time
+	Posted, Updated       time.Time
 }
 
 func AllArticles(db *sql.DB) ([]*Article, error) {
@@ -25,10 +26,8 @@ func AllArticles(db *sql.DB) ([]*Article, error) {
 	ret := []*Article{}
 	for rows.Next() {
 		v := Article{}
-		rows.Scan(
-			&v.Author.Id, &v.Author.Pseudonym, &v.Author.Name, &v.Author.EncPass,
-			&v.Id, &v.Slug, &v.Title, &v.Contents, &v.Posted, &v.Updated,
-		)
+		rows.Scan(&v.Author.Id, &v.Author.Pseudonym, &v.Author.Name, &v.Author.EncPass)
+		rows.Scan(&v.Id, &v.Slug, &v.Title, &v.Contents, &v.Posted, &v.Updated)
 		ret = append(ret, &v)
 	}
 	if err = rows.Err(); err != nil {
