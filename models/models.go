@@ -22,12 +22,12 @@ func AllArticles(db *sql.DB) ([]*Article, error) {
 	if err != nil {
 		return nil, err
 	}
-	ret := []Article{}
+	ret := []*Article{}
 	for rows.Next() {
 		v := Article{}
 		rows.Scan(
 			&v.Author.Id, &v.Author.Pseudonym, &v.Author.Name, &v.Author.EncPass,
-			&v.Id, &v.Slug, &v.Title, &v.Posted, &v.Updated,
+			&v.Id, &v.Slug, &v.Title, &v.Contents, &v.Posted, &v.Updated,
 		)
 		ret = append(ret, &v)
 	}
