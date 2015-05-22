@@ -26,8 +26,10 @@ func AllArticles(db *sql.DB) ([]*Article, error) {
 	ret := []*Article{}
 	for rows.Next() {
 		v := Article{}
-		rows.Scan(&v.Author.Id, &v.Author.Pseudonym, &v.Author.Name, &v.Author.EncPass)
-		rows.Scan(&v.Id, &v.Slug, &v.Title, &v.Contents, &v.Posted, &v.Updated)
+		rows.Scan(
+			&v.Author.Id, &v.Author.Pseudonym, &v.Author.Name, &v.Author.EncPass,
+			&v.Id, &v.Slug, &v.Title, &v.Contents, &v.Posted, &v.Updated,
+		)
 		ret = append(ret, &v)
 	}
 	if err = rows.Err(); err != nil {
