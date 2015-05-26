@@ -12,8 +12,8 @@ type Author struct {
 }
 
 type Article struct {
-	Id int
 	Author
+	Id                    int
 	Slug, Title, Contents string
 	Posted, Updated       time.Time
 }
